@@ -49,7 +49,6 @@ pressTick = pi.get_current_tick()
 def bouton():
     etat_bouton = 1
     while True:
-        diff = pigpio.tickDiff(pressTick, tick)
         value = pi.read(BTN)
         if value != etat_bouton:
             etat_bouton = value

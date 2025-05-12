@@ -1,4 +1,4 @@
-
+from datetime import datetime
 # Test bouton
 import pigpio
 import time
@@ -13,13 +13,21 @@ while True:
     etat_bouton = 1
     value = pi.read(BTN)
     if value != etat_bouton:
-        start_time = time.time()
-        
-        value = pi.read(BTN)
+        start_time = datetime.now().second
+        start_time2 = str(start_time)
+        print(start_time)
         if(value == etat_bouton):
-            buttonTime = time.time() - start_time
-            print(buttonTime)
+            end_time = datetime.now().second
+            print("End tme : " + str(end_time))
+            buttonTime = end_time - start_time
+            print("button time : " + str(buttonTime))
 
             if buttonTime >= 2:
-                print("Plus grand que 2")
+                print("Long button")
+                print(buttonTime)
+            elif buttonTime >= 1:
+                print("Court button")
+            
+
+
 
